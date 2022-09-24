@@ -1,0 +1,76 @@
+---
+title: "p8105_hw1_mff2137.Rmd"
+author: "Mohammad"
+date: "2022-09-23"
+output: github_document
+---
+
+```{r, message = FALSE, error = FALSE}
+library(tidyverse)
+```
+
+This is a markdown document!
+
+# Problem 1
+ 
+## Data
+ 
+I will use this code to load the `penguins` dataset: 
+ 
+```{r chunk_data}
+data("penguins", package = "palmerpenguins")
+```
+
+## Description
+
+The `penguins` dataset has `r ncol(penguins)` columns and `r nrow(penguins)` rows. Here's a summary of the the important variables and values in this dataset showing the names and sums for species and island variables, the type, sum, and number of NA's for sex variable, and the minimum, 1st quantile, median, mean, 3rd quantile, maximum, and number of NA's respectively for the body mass variable: species: `r summary(penguins$species)`, island: `r summary(penguins$island)`, body mass: `r summary(penguins$body_mass_g)` , and sex: `r summary(penguins$sex)`.
+
+## Mean
+
+I can take the mean of the flipper length. The mean is `r round(mean(penguins$flipper_length_mm, na.rm = TRUE), 2)`.
+
+## Plot 
+
+I can make a scatterplot of the flipper length and bill length by species. 
+
+```{r chunk_scatterplot, echo = FALSE, warning = FALSE}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
+# Problem 2
+
+## New Dataframe
+
+I can create a data frame using this **code chunk**
+
+```{r chunk_dataframe}
+set.seed(20)
+hw_df <- tibble(
+    samp = rnorm(10, mean = 0, sd = 1),
+    vec_log = samp > 0,
+    vec_char = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"),
+    vec_factor = factor(c("y", "n", "m", "y", "m", "n", "n", "y", "y", "m"), 
+                        levels = c("y", "n", "m"))
+)
+```
+
+## Means
+
+I can try to take the means of the variables in this data frame. The mean of the random sample is `r mean(pull(hw_df, samp))`. The mean of the logical vector is `r mean(pull(hw_df, vec_log))`. The mean of the character vector is `r mean(pull(hw_df, vec_char))`. The mean of the factor vector is `r mean(pull(hw_df, vec_factor))`. We notice that the means for the character vector and factor vector returns as `NA` because their arguments are not numeric or logical. 
+
+## Converting variables
+
+I can convert the logical, character, and factor variables to numeric using the following code:
+
+```{r, eval = FALSE}
+hw_df <- tibble(
+    samp = rnorm(10, mean = 0, sd = 1),
+    vec_log = as.numeric(samp > 0),
+    vec_char = as.numeric(c("1", "2", "3", "4", "4", "6", "7", "8", "9", "10")),
+    vec_factor = as.numeric(factor(c("y", "n", "m", "y", "m", "n", "n", "y", "y", "m"), 
+                                   levels = c("y", "n", "m")))
+)
+```
+
+Now we notice that we can get the means for all variables in the dataset. The mean of the random sample is `r round(mean(pull(hw_df, samp)), 2)`. The mean of the logical vector is `r round(mean(pull(hw_df, vec_log)), 2)`. The mean of the character vector is `r round(mean(pull(hw_df, vec_char)), 2)`. The mean of the factor vector is `r round(mean(pull(hw_df, vec_factor)), 2)`. This is because value for all variables are now converted to numeric.
+
