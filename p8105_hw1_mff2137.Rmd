@@ -57,6 +57,7 @@ hw_df <- tibble(
     vec_factor = factor(c("y", "n", "m", "y", "m", "n", "n", "y", "y", "m"), 
                         levels = c("y", "n", "m"))
 )
+hw_df
 ```
 
 ## Means
@@ -72,7 +73,8 @@ arguments are not numeric or logical.
 
 I can convert the logical, character, and factor variables to numeric using the following code:
 
-```{r, eval = FALSE}
+```{r, eval = FALSE, converted_dataframe}
+set.seed(20)
 hw_df <- tibble(
     samp = rnorm(10, mean = 0, sd = 1),
     vec_log = as.numeric(samp > 0),
