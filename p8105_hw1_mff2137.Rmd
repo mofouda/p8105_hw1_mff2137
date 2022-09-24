@@ -23,7 +23,11 @@ data("penguins", package = "palmerpenguins")
 
 ## Description
 
-The `penguins` dataset has `r ncol(penguins)` columns and `r nrow(penguins)` rows. Here's a summary of the the important variables and values in this dataset showing the names and sums for species and island variables, the type, sum, and number of NA's for sex variable, and the minimum, 1st quantile, median, mean, 3rd quantile, maximum, and number of NA's respectively for the body mass variable: species: `r summary(penguins$species)`, island: `r summary(penguins$island)`, body mass: `r summary(penguins$body_mass_g)` , and sex: `r summary(penguins$sex)`.
+The `penguins` dataset has `r ncol(penguins)` columns and `r nrow(penguins)` rows. 
+Here's a summary of the the important variables and values in this dataset showing 
+the names and sums for species and island variables, the type, sum, and number of 
+NA's for sex variable, and the minimum, 1st quantile, median, mean, 3rd quantile, 
+maximum, and number of NA's respectively for the body mass variable: species: `r summary(penguins$species)`, island: `r summary(penguins$island)`, body mass: `r summary(penguins$body_mass_g)` , and sex: `r summary(penguins$sex)`.
 
 ## Mean
 
@@ -56,7 +60,12 @@ hw_df <- tibble(
 
 ## Means
 
-I can try to take the means of the variables in this data frame. The mean of the random sample is `r mean(pull(hw_df, samp))`. The mean of the logical vector is `r mean(pull(hw_df, vec_log))`. The mean of the character vector is `r mean(pull(hw_df, vec_char))`. The mean of the factor vector is `r mean(pull(hw_df, vec_factor))`. We notice that the means for the character vector and factor vector returns as `NA` because their arguments are not numeric or logical. 
+I can try to take the means of the variables in this data frame. The mean of the 
+random sample is `r mean(pull(hw_df, samp))`. The mean of the logical vector is 
+`r mean(pull(hw_df, vec_log))`. The mean of the character vector is `r mean(pull(hw_df, vec_char))`.
+The mean of the factor vector is `r mean(pull(hw_df, vec_factor))`. We notice that
+the means for the character vector and factor vector returns as `NA` because their
+arguments are not numeric or logical. 
 
 ## Converting variables
 
@@ -72,5 +81,10 @@ hw_df <- tibble(
 )
 ```
 
-Now we notice that we can get the means for all variables in the dataset. The mean of the random sample is `r round(mean(pull(hw_df, samp)), 2)`. The mean of the logical vector is `r round(mean(pull(hw_df, vec_log)), 2)`. The mean of the character vector is `r round(mean(pull(hw_df, vec_char)), 2)`. The mean of the factor vector is `r round(mean(pull(hw_df, vec_factor)), 2)`. This is because value for all variables are now converted to numeric.
+Now we notice that we can get the means for all variables in the dataset. The mean 
+of the random sample is `r round(mean(pull(hw_df, samp)), 2)`. The mean of the logical
+vector is `r round(mean(pull(hw_df, vec_log)), 2)`. The mean of the character vector is
+`r round(mean(pull(hw_df, vec_char)), 2)`. The mean of the factor vector is 
+`r round(mean(pull(hw_df, vec_factor)), 2)`. This is because value for all variables
+are now converted to numeric.
 
