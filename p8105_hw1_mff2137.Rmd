@@ -27,7 +27,8 @@ The `penguins` dataset has `r ncol(penguins)` columns and `r nrow(penguins)` row
 Here's a summary of the the important variables and values in this dataset showing 
 the names and sums for species and island variables, the type, sum, and number of 
 NA's for sex variable, and the minimum, 1st quantile, median, mean, 3rd quantile, 
-maximum, and number of NA's respectively for the body mass variable: species: `r summary(penguins$species)`, island: `r summary(penguins$island)`, body mass: `r summary(penguins$body_mass_g)` , and sex: `r summary(penguins$sex)`.
+maximum, and number of NA's respectively for the body mass variable: species: `r summary(penguins$species)`, island: `r summary(penguins$island)`, body mass: 
+`r summary(penguins$body_mass_g)` , and sex: `r summary(penguins$sex)`.
 
 ## Mean
 
